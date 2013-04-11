@@ -34,15 +34,14 @@ public class VideoRentalStore {
         //rentalStore.addUsertoDB(u);
         
         //rentalStore.searchUserinDBbyID(50);
-        rentalStore.searchUserinDBbyID(1);
+        //rentalStore.searchUserinDBbyID(1);
         
-        rentalStore.searchUserinDBbyLastName("Acheson");
-        
-        rentalStore.displayTable();
+        //rentalStore.searchUserinDBbyLastName("Acheson");
+        //rentalStore.displayTable();
         //rentalStore.deleteUser("Will", "Acheson");
         
-        
-        
+        rentalStore.updateUserInDB("lastName", "Scott", 1);
+        rentalStore.searchUserinDBbyID(1);
         
     }
 }

@@ -151,6 +151,30 @@ public class Database {
         }
     }
     
+    // @param columnToEdit : the column you wish to make the edit to, IE firstName, lastName, emailAddress
+    // @param editToMake : the edit you wish to make to that column in this row
+    // @param ID : the customerId you wish to make the edit to
+    public void updateUserInDB(String columnToEdit, String editToMake, int ID){
+        boolean updateUser;
+        try {
+            String update = "UPDATE customer SET " + "'" + columnToEdit + "'" + "=" +  "'" + editToMake + "'" + "WHERE " + "customerId= " +    ID  ;
+            System.out.println(update);
+            stmt = conn.createStatement();
+            updateUser = stmt.execute(update);
+            
+        }
+        catch (Exception e){
+            
+            try {
+                
+                conn.close();
+            }
+            catch (Exception e1){
+            }
+            
+        }
+    }
+    
     public void searchUserinDBbyID(int ID){
         ResultSet searchUserRES;
         try {
@@ -224,8 +248,6 @@ public class Database {
             
         }
     }
-     
-    
      
     public void deleteUser(String firstName , String lastName){
         boolean userDeleteRES;
