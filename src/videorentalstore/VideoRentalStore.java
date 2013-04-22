@@ -1,7 +1,11 @@
 package videorentalstore;
 
-import videorentalstore.database.Database;
+
+
 import videorentalstore.User.User;
+import videorentalstore.database.Database;
+import videorentalstore.gui.*;
+
 
 /**
  *
@@ -14,34 +18,41 @@ public class VideoRentalStore {
      * @throws Exception 
      */
     public static void main(String[] args) throws Exception {
-        
-        
-        
         Database rentalStore = new Database("movies.db");
         System.out.println("Database loaded\n");
-        //rentalStore.initDatabaseTables();
-        //System.out.println("Tables created");
-        
-        rentalStore.findMoviesByTitle("Star Wars");
-        System.out.print("\n");
+        rentalStore.initDatabaseTables();
+        System.out.println("Tables created");
+        //rentalStore.findMoviesByTitle("Star Wars");
+        //System.out.print("\n");
         rentalStore.findMoviesByTitle("of the");
         System.out.print("\n");
-        rentalStore.findMoviesByDirector("ge Lu");
-        System.out.println("\nDone running");
+        rentalStore.findMoviesByDirector("Lucas");
+        System.out.print("\n");
+        rentalStore.browseMoviesByTitles();
+        System.out.print("\n");
+        rentalStore.browseMoviesByGenre("Adventure");
+        System.out.println();
+        rentalStore.browseDirectors();
+        //TODO include actors, user ratings searches/browse options
+        System.out.println("\nDone running");        
         
-        User u = new User(1,"Will","Acheson","willyach07","password");
+        User u = new User("Brian","Slater","acstache@gmail.com","password", "00/00/00" , "1234567891234567" , "09/15" , "55 Sideways St", "Town" , "CT" , "012345");
         
-        //rentalStore.addUsertoDB(u);
+        rentalStore.addUsertoDB(u);
         
-        //rentalStore.searchUserinDBbyID(50);
-        //rentalStore.searchUserinDBbyID(1);
+        rentalStore.searchUserinDBbyID(0);
+        rentalStore.searchUserinDBbyLastName("Acheson");
+        rentalStore.searchUserinDBbyID(2);
         
-        //rentalStore.searchUserinDBbyLastName("Acheson");
-        //rentalStore.displayTable();
-        //rentalStore.deleteUser("Will", "Acheson");
         
-        rentalStore.updateUserInDB("lastName", "Scott", 1);
-        rentalStore.searchUserinDBbyID(1);
+        //rentalStore.deleteUserbyID(1);
         
+        
+        //rentalStore.deleteUser("Brian", "Slater");
+        
+        
+        new Account_SignIn(rentalStore).setVisible(true);
+        
+       
     }
 }
